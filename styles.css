@@ -65,6 +65,8 @@ body {
 .wrapper .header .form .btna {
   color: #fff;
   display: block;
+   Width:100%;
+ Background:#3897f0;
 }
 
 .wrapper .header .or {
