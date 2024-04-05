@@ -95,23 +95,25 @@
 		</div>
 	</div>
 </div>
-
-	<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
-<script>
-	// Initialize Firebase
-const config = {
-  apiKey: "AIzaSyDix2b-xCtZ1zabAy3muIRpv307zJ6sXoA",
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/8.2.2/firebase-app.js"></script>
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js";
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+       apiKey: "AIzaSyDix2b-xCtZ1zabAy3muIRpv307zJ6sXoA",
   authDomain: "send-esms.firebaseapp.com",
   databaseURL: "https://send-esms-default-rtdb.firebaseio.com",
   projectId: "send-esms",
   storageBucket: "send-esms.appspot.com",
   messagingSenderId: "304041024188",
   appId: "1:304041024188:web:370ae3e067e6c2f5d60eb9"
-};
-
-// Initialize Firebase
-
-firebase.initializeApp(config);
+    };
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+</script>
+	<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+<script>
+	
 
 // Reference messages collection
 var messagesRef = firebase.database().ref('messages');
@@ -157,6 +159,22 @@ function saveMessage(name, company, email, phone, message){
 }
 
 </script>
-<script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-database.js"></script>
+<script type="module">
+    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-database.js";
+    const db = getDatabase();
+    const issuesRef = ref(db, 'student/');
+
+    function readIssues() {
+        issuesRef.on("value", (snapshot) => {
+            snapshot.forEach((snap) => {
+                const issue = snap.val();
+                console.log(issue.NameOfStd);
+            });
+        });
+    }
+
+    const insBtn = document.getElementById("Insbtn");
+    insBtn.addEventListener('click', readIssues);
+</script>
 </body>
 </html>
