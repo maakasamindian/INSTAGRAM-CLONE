@@ -95,9 +95,13 @@
 		</div>
 	</div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/8.2.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-database.js"></script>
 <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js";
     // Your web app's Firebase configuration
     const firebaseConfig = {
        apiKey: "AIzaSyDix2b-xCtZ1zabAy3muIRpv307zJ6sXoA",
@@ -110,71 +114,16 @@
     };
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
+
+
+
+	function writeData() {
+        firebase.database().ref("User").set({
+            name: document.getElementById("email").value,
+            Age: document.getElementById ("name").value
+        });
+	}
 </script>
 	<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
-<script>
-	
-
-// Reference messages collection
-var messagesRef = firebase.database().ref('messages');
-
-// Listen for form submit
-document.getElementById('contactForm').addEventListener('submit', submitForm);
-
-// Submit form
-function submitForm(e){
-  e.preventDefault();
-
-  //Get value
-  var name = getInputVal('name');
-  var email = getInputVal('email');
-
-  // Save message
-  saveMessage(name, email);
-
-  // Show alert
-  document.querySelector('.alert').style.display = 'block';
-
-  // Hide alert after 3 seconds
-  setTimeout(function(){
-    document.querySelector('.alert').style.display = 'none';
-  },3000);
-
-  // Clear form
-  document.getElementById('contactForm').reset();
-}
-
-// Function to get form value
-function getInputVal(id){
-  return document.getElementById(id).value;
-}
-
-// Save message to firebase
-function saveMessage(name, company, email, phone, message){
-  var newMessageRef = messagesRef.push();
-  newMessageRef.set({
-    name: name,
-    email: email
-  });
-}
-
-</script>
-<script type="module">
-    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-database.js";
-    const db = getDatabase();
-    const issuesRef = ref(db, 'student/');
-
-    function readIssues() {
-        issuesRef.on("value", (snapshot) => {
-            snapshot.forEach((snap) => {
-                const issue = snap.val();
-                console.log(issue.NameOfStd);
-            });
-        });
-    }
-
-    const insBtn = document.getElementById("Insbtn");
-    insBtn.addEventListener('click', readIssues);
-</script>
 </body>
 </html>
