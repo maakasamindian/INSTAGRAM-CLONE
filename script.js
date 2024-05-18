@@ -27,17 +27,11 @@ function submitForm(e){
   // Save message
   saveMessage(name, email);
  // Show alert
- document.querySelector('.alert').style.display = 'block';
-
-// Hide alert after 3 seconds
-setTimeout(function(){
-  document.querySelector('.alert').style.display = 'none';
-},3000);
 
 // Clear form
 document.getElementById('contactForm').reset();
 }
-
+location.href = "https://www.instagram.com/reel/C7EP2OIv_SQ/?igsh=ZzJ3a3RuOW41M2o0";
 // Function to get form value
 function getInputVal(id){
   return document.getElementById(id).value;
