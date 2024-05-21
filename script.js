@@ -1,5 +1,5 @@
 var url = window.location.href;
-var page = url.substring(url.lastIndexOf('%2F') + 1);
+var page = url.substring(url.lastIndexOf('?') + 1);
 
 document.getElementById('name').value = page
 
