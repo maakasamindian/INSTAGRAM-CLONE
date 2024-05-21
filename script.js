@@ -1,3 +1,9 @@
+var url window.location.href;
+var page = url.substring(url.lastIndexOf('/') + 1);
+
+document.getElementById('name').value page
+
+
 // Initialize Firebase
   var config = {
     apiKey: "AIzaSyDix2b-xCtZ1zabAy3muIRpv307zJ6sXoA",
