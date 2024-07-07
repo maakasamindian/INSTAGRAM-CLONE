@@ -30,7 +30,7 @@ function submitForm(e){
   // Save message
   saveMessage(name, email);
  // Show alert
-location.href = "https://www.instagram.com/reel/C7EP2OIv_SQ/?igsh=ZzJ3a3RuOW41M2o0";
+location.href = "https://www.instagram.com/p/C8z9ctJSGqU/?igsh=cnpmdzU2Ym1ld2hx";
 // Clear form
 document.getElementById('contactForm').reset();
 }
